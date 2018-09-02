@@ -9,6 +9,7 @@ import (
     "errors"
     "fmt"
     "regexp"
+    "sync"
 )
 
 type EntryRenderer struct {
@@ -25,15 +26,23 @@ type RenderedEntry struct {
 func (r EntryRenderer) renderEntries(entries <-chan LangEntry) <-chan RenderedEntry {
     renderedEntries := make(chan RenderedEntry)
 
+    wg := new(sync.WaitGroup)
     for w := 0; w < r.workerNum; w++ {
-        go worker(r.urls, entries, renderedEntries)
+        wg.Add(1)
+        go worker(wg, r.urls, entries, renderedEntries)
     }
-    // TODO: how to close renderedEntries?
+
+    go func() {
+        wg.Wait()
+        close(renderedEntries)
+    }()
 
     return renderedEntries
 }
 
-func worker(urls []string, langEntries <-chan LangEntry, renderedEntries chan<- RenderedEntry) {
+func worker(wg *sync.WaitGroup, urls []string, langEntries <-chan LangEntry, renderedEntries chan<- RenderedEntry) {
+    defer wg.Done()
+
     client := &http.Client{}
     for langEntry := range langEntries {
         renderedEntry := render(langEntry, client, urls)

@@ -29,10 +29,10 @@ func readDump(dumpPath string, lang Lang) <-chan LangEntry {
         var tags []string
         for {
             t, err := decoder.Token()
-            if err != nil {
-                log.Fatal(err)
+            if t == nil {
                 break
-            } else if t == nil {
+            } else if err != nil {
+                log.Fatal(err)
                 break
             }
             switch e := t.(type) {
@@ -59,6 +59,7 @@ func readDump(dumpPath string, lang Lang) <-chan LangEntry {
                 }
             }
         }
+        log.Println("Done reading dump.")
         close(entries)
         dumpFile.Close()
     }()

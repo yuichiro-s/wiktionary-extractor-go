@@ -72,4 +72,5 @@ func main() {
         log.Printf("Writing to %s\n", p)
         ioutil.WriteFile(p, []byte(entry.text), 0644)
     }
+    log.Println("Done.")
 }
