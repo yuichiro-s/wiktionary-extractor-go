@@ -66,6 +66,7 @@ func main() {
     renderer := EntryRenderer{urls: urls, workerNum: workerNum}
     for entry := range renderer.renderEntries(newLangEntries) {
         p := makePath(outDir, entry.id)
+        log.Printf("Writing to %s\n", p)
         ioutil.WriteFile(p, []byte(entry.text), 0644)
     }
 }
