@@ -27,11 +27,3 @@ func getLang(langStr string) Lang {
         return UnknownLanguage
     }
 }
-
-var langTitles = map[Lang]string{
-    EnEs: "==Spanish==",
-    EnEn: "==English==",
-    EnDe: "==German==",
-    EnKo: "==Korean==",
-    JaKo: "==朝鮮語==",
-}
