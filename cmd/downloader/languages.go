@@ -28,10 +28,10 @@ func getLang(langStr string) Lang {
     }
 }
 
-var langTitles = map[Lang]string{
-    EnEs: "==Spanish==",
-    EnEn: "==English==",
-    EnDe: "==German==",
-    EnKo: "==Korean==",
-    JaKo: "==朝鮮語==",
+var langTitles = map[Lang][]string{
+    EnEs: {"==Spanish=="},
+    EnEn: {"==English=="},
+    EnDe: {"==German=="},
+    EnKo: {"==Korean=="},
+    JaKo: {"==朝鮮語==", "=={{ko}}==", "=={{kor}}==", "=={{kor-KP}}==", "=={{kor-KR}=="},
 }

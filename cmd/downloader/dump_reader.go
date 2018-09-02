@@ -43,7 +43,7 @@ func readDump(dumpPath string, lang Lang) <-chan LangEntry {
                     lastTag := tags[len(tags)-1]
                     if lastTag == "title" {
                         currentTitle = string(e)
-                    } else if len(tags) >= 2 && lastTag == "id" && tags[len(tags)-2] == "revision"{
+                    } else if len(tags) >= 2 && lastTag == "id" && tags[len(tags)-2] == "revision" {
                         currentId = string(e)
                     } else if lastTag == "text" {
                         currentText = string(e)
@@ -73,8 +73,11 @@ func getSectionNumber(text string, lang Lang) int {
     for _, line := range strings.Split(text, "\n") {
         if strings.HasPrefix(line, "==") {
             sectionNum++
-            if line == langTitle {
-                return sectionNum
+            for _, t := range langTitle {
+                // remove whitespaces
+                if strings.Replace(line, " ", "", -1) == strings.Replace(t, " ", "", -1) {
+                    return sectionNum
+                }
             }
         }
     }
