@@ -46,7 +46,10 @@ func main() {
         log.Fatal("Unknown language: " + langStr)
     }
 
-    os.Mkdir(outDir, 0755)
+    err := os.MkdirAll(outDir, 0755)
+    if err != nil {
+        log.Fatal(err)
+    }
 
     // filter out existing entries
     langEntries := readDump(dump, lang)
