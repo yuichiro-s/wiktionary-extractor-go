@@ -7,6 +7,7 @@ const (
     EnEs
     EnEn
     EnDe
+    EnZh
     EnKo
     JaKo
 )
@@ -19,6 +20,8 @@ func getLang(langStr string) Lang {
         return EnEn
     case "en-de":
         return EnDe
+    case "en-zh":
+        return EnZh
     case "en-ko":
         return EnKo
     case "ja-ko":
@@ -33,5 +36,6 @@ var langTitles = map[Lang][]string{
     EnEn: {"==English=="},
     EnDe: {"==German=="},
     EnKo: {"==Korean=="},
+    EnZh: {"==Chinese=="},
     JaKo: {"==朝鮮語==", "=={{ko}}==", "=={{kor}}==", "=={{kor-KP}}==", "=={{kor-KR}=="},
 }
