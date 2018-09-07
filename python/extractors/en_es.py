@@ -2,70 +2,63 @@ import logging
 
 from extractors.common import default_extractor, get_next
 
-# mood
-INFINITIVE = 'infinitive'
-GERUND = 'gerund'
-PAST_PARTICIPLE = 'past-participle'
-INDICATIVE = 'indicative'
-SUBJUNCTIVE = 'subjunctive'
-IMPERATIVE = 'imperative'
-
-# number
-SINGULAR = 'singular'
-PLURAL = 'plural'
-
 # person
-PERSON_1 = '1st-person'
-PERSON_2 = '2nd-person'
-PERSON_3 = '3rd-person'
+PERSON_1_SINGULAR = '1s'
+PERSON_2_SINGULAR = '2s'
+PERSON_3_SINGULAR = '3s'
+PERSON_1_PLURAL = '1p'
+PERSON_2_PLURAL = '2p'
+PERSON_3_PLURAL = '3p'
 
-# gender
-MASCULINE = 'masculine'
-FEMININE = 'feminine'
+# gender/number
+MASCULINE = 'm.'
+FEMININE = 'f.'
+PLURAL = 'pl.'
 
-# tense
-PRESENT = 'present'
-IMPERFECT = 'imperfect'
-PRETERITE = 'preterite'
-FUTURE = 'future'
-CONDITIONAL = 'conditional'
+# tense/mood
+INFINITIVE = 'INF'
+GERUND = 'GER'
+PAST_PARTICIPLE = 'PP'
+PRESENT = 'PRES'
+IMPERFECT = 'IMPERF'
+PRETERITE = 'PRET'
+FUTURE = 'FUT'
+CONDITIONAL = 'COND'
+SUBJUNCTIVE = 'SBJV'
+SUBJUNCTIVE_IMPERFECT = 'SBJV-IMPERF'
+IMPERATIVE = 'IMP'
 
-# se/ra
-RA = 'ra'
-SE = 'se'
+# suffixes
+SUFFIX_ME = 'me'
+SUFFIX_TE = 'te'
+SUFFIX_LE = 'le'
+SUFFIX_LA = 'la'
+SUFFIX_LO = 'lo'
+SUFFIX_SE = 'se'
+SUFFIX_NOS = 'nos'
+SUFFIX_OS = 'os'
+SUFFIX_LES = 'les'
+SUFFIX_LAS = 'las'
+SUFFIX_LOS = 'los'
 
-COMB_INFINITIVE = 'comb-infinitive'
-COMB_GERUND = 'comb-gerund'
-COMB_IMPERATIVE = 'comb-imperative'
-
-INFORMAL = 'informal'
-FORMAL = 'formal'
-
-TO_PERSON_1_PLURAL = 'to-1st-person-plural'
-TO_PERSON_2_SINGULAR = 'to-2nd-person-singular'
-TO_PERSON_2_PLURAL = 'to-2nd-person-plural'
-
-DATIVE = 'dative'
-ACCUSATIVE = 'accusative'
-
-REFLEXIVE = 'reflexive'
+REFLEXIVE = 'REFL'
 
 # noun
 UNCOUNTABLE = 'uncountable'
 
 # adjective
-SUPERLATIVE = 'superlative'
+SUPERLATIVE = 'SUP'
 
 
 def mk_variant_entry(variant_type, variant_form):
-    return {'type': variant_type, 'form': variant_form}
+    return [variant_type, variant_form]
 
 
 def filter_variants(variants, supported_variants):
     new_variants = []
     for variant_type, variant_form in variants:
         if variant_type in supported_variants:
-            new_variant_type = mk_name(supported_variants[variant_type])
+            new_variant_type = supported_variants[variant_type]
             new_variants.append(
                 mk_variant_entry(new_variant_type, variant_form))
         else:
@@ -104,9 +97,9 @@ def adjective_extractor(node):
     variants = filter_variants(
         variants, {
             "plural": [PLURAL],
-            "feminine singular": [FEMININE, SINGULAR],
+            "feminine singular": [FEMININE],
             "feminine plural": [FEMININE, PLURAL],
-            "feminine": [FEMININE, SINGULAR],
+            "feminine": [FEMININE],
             "masculine plural": [MASCULINE, PLURAL],
             "superlative": [SUPERLATIVE],
         })
@@ -130,112 +123,78 @@ def verb_extractor(node):
         if 'NavFrame' in div.get('class'):
             head = div.div.text
             new_conjugations = []
+            is_reflexive = form + 'se' in head or form.endswith('se')
             if 'Conjugation of ' + form in head:
-                new_conjugations = parse_conjugation_table(div.table)
-            elif 'Selected combined forms of ' + form in head:
+                new_conjugations = parse_conjugation_table(
+                    div.table, is_reflexive)
+            elif not is_reflexive and 'Selected combined forms of ' + form in head:
+                # don't parse combined form table of a reflexive verb because it's the same as non-reflexive version
                 new_conjugations = parse_combined_forms_table(div.table)
-            is_reflexive = form + 'se' in head
             for conj_type, conj_form in new_conjugations:
                 if is_reflexive:
-                    conj_type = mk_name([REFLEXIVE, conj_type])
+                    conj_type = [REFLEXIVE, *conj_type]
                 conjugations.append(mk_variant_entry(conj_type, conj_form))
 
     if conjugations:
-        variants = conjugations
+        new_conjugations = []
+        # filter out duplicates
+        hs = set()
+        for conj in conjugations:
+            h = str(conj)
+            if h not in hs:
+                hs.add(h)
+                new_conjugations.append(conj)
+        variants = new_conjugations
 
     return form, attrs, variants, definitions
 
 
-def get_td(trs, i, j):
+def get_td(trs, i, j, is_reflexive):
     tds = trs[i].find_all('td')
     res = []
     td = tds[j]
-    for span in td.find_all('span'):
-        res.append(span.text.strip())
+    if is_reflexive:
+        res.append(td.text.strip())
+    else:
+        for span in td.find_all('span'):
+            res.append(span.text.strip())
     return res
 
 
-def mk_name(types):
-    return '+'.join(types)
-
-
-def parse_conjugation_table(table):
+def parse_conjugation_table(table, is_reflexive):
     res = []
     trs = table.find_all('tr')
 
     def _g(i, j, *types):
-        name = mk_name(types)
-        for item in get_td(trs, i, j):
-            res.append((name, item))
+        for item in get_td(trs, i, j, is_reflexive):
+            res.append((types, item))
+
+    def _g2(i, t):
+        persons = [
+            PERSON_1_SINGULAR, PERSON_2_SINGULAR, PERSON_3_SINGULAR,
+            PERSON_1_PLURAL, PERSON_2_PLURAL, PERSON_3_PLURAL
+        ]
+        for j, person in enumerate(persons):
+            for item in get_td(trs, i, j, is_reflexive):
+                res.append(([t, person], item))
 
     _g(0, 0, INFINITIVE)
     _g(1, 0, GERUND)
-    _g(3, 0, PAST_PARTICIPLE, SINGULAR, MASCULINE)
-    _g(3, 1, PAST_PARTICIPLE, SINGULAR, FEMININE)
-    _g(4, 0, PAST_PARTICIPLE, PLURAL, MASCULINE)
-    _g(4, 1, PAST_PARTICIPLE, PLURAL, FEMININE)
+    if not is_reflexive:
+        _g(3, 0, PAST_PARTICIPLE, MASCULINE)
+        _g(3, 1, PAST_PARTICIPLE, FEMININE)
+        _g(4, 0, PAST_PARTICIPLE, MASCULINE, PLURAL)
+        _g(4, 1, PAST_PARTICIPLE, FEMININE, PLURAL)
 
-    _g(8, 0, INDICATIVE, PRESENT, PERSON_1, SINGULAR)
-    _g(8, 1, INDICATIVE, PRESENT, PERSON_2, SINGULAR)
-    _g(8, 2, INDICATIVE, PRESENT, PERSON_3, SINGULAR)
-    _g(8, 3, INDICATIVE, PRESENT, PERSON_1, PLURAL)
-    _g(8, 4, INDICATIVE, PRESENT, PERSON_2, PLURAL)
-    _g(8, 5, INDICATIVE, PRESENT, PERSON_3, PLURAL)
-
-    _g(9, 0, INDICATIVE, IMPERFECT, PERSON_1, SINGULAR)
-    _g(9, 1, INDICATIVE, IMPERFECT, PERSON_2, SINGULAR)
-    _g(9, 2, INDICATIVE, IMPERFECT, PERSON_3, SINGULAR)
-    _g(9, 3, INDICATIVE, IMPERFECT, PERSON_1, PLURAL)
-    _g(9, 4, INDICATIVE, IMPERFECT, PERSON_2, PLURAL)
-    _g(9, 5, INDICATIVE, IMPERFECT, PERSON_3, PLURAL)
-
-    _g(10, 0, INDICATIVE, PRETERITE, PERSON_1, SINGULAR)
-    _g(10, 1, INDICATIVE, PRETERITE, PERSON_2, SINGULAR)
-    _g(10, 2, INDICATIVE, PRETERITE, PERSON_3, SINGULAR)
-    _g(10, 3, INDICATIVE, PRETERITE, PERSON_1, PLURAL)
-    _g(10, 4, INDICATIVE, PRETERITE, PERSON_2, PLURAL)
-    _g(10, 5, INDICATIVE, PRETERITE, PERSON_3, PLURAL)
-
-    _g(11, 0, INDICATIVE, FUTURE, PERSON_1, SINGULAR)
-    _g(11, 1, INDICATIVE, FUTURE, PERSON_2, SINGULAR)
-    _g(11, 2, INDICATIVE, FUTURE, PERSON_3, SINGULAR)
-    _g(11, 3, INDICATIVE, FUTURE, PERSON_1, PLURAL)
-    _g(11, 4, INDICATIVE, FUTURE, PERSON_2, PLURAL)
-    _g(11, 5, INDICATIVE, FUTURE, PERSON_3, PLURAL)
-
-    _g(12, 0, INDICATIVE, CONDITIONAL, PERSON_1, SINGULAR)
-    _g(12, 1, INDICATIVE, CONDITIONAL, PERSON_2, SINGULAR)
-    _g(12, 2, INDICATIVE, CONDITIONAL, PERSON_3, SINGULAR)
-    _g(12, 3, INDICATIVE, CONDITIONAL, PERSON_1, PLURAL)
-    _g(12, 4, INDICATIVE, CONDITIONAL, PERSON_2, PLURAL)
-    _g(12, 5, INDICATIVE, CONDITIONAL, PERSON_3, PLURAL)
-
-    _g(15, 0, SUBJUNCTIVE, PRESENT, PERSON_1, SINGULAR)
-    _g(15, 1, SUBJUNCTIVE, PRESENT, PERSON_2, SINGULAR)
-    _g(15, 2, SUBJUNCTIVE, PRESENT, PERSON_3, SINGULAR)
-    _g(15, 3, SUBJUNCTIVE, PRESENT, PERSON_1, PLURAL)
-    _g(15, 4, SUBJUNCTIVE, PRESENT, PERSON_2, PLURAL)
-    _g(15, 5, SUBJUNCTIVE, PRESENT, PERSON_3, PLURAL)
-
-    _g(16, 0, SUBJUNCTIVE, IMPERFECT, RA, PERSON_1, SINGULAR)
-    _g(16, 1, SUBJUNCTIVE, IMPERFECT, RA, PERSON_2, SINGULAR)
-    _g(16, 2, SUBJUNCTIVE, IMPERFECT, RA, PERSON_3, SINGULAR)
-    _g(16, 3, SUBJUNCTIVE, IMPERFECT, RA, PERSON_1, PLURAL)
-    _g(16, 4, SUBJUNCTIVE, IMPERFECT, RA, PERSON_2, PLURAL)
-    _g(16, 5, SUBJUNCTIVE, IMPERFECT, RA, PERSON_3, PLURAL)
-
-    _g(17, 0, SUBJUNCTIVE, IMPERFECT, SE, PERSON_1, SINGULAR)
-    _g(17, 1, SUBJUNCTIVE, IMPERFECT, SE, PERSON_2, SINGULAR)
-    _g(17, 2, SUBJUNCTIVE, IMPERFECT, SE, PERSON_3, SINGULAR)
-    _g(17, 3, SUBJUNCTIVE, IMPERFECT, SE, PERSON_1, PLURAL)
-    _g(17, 4, SUBJUNCTIVE, IMPERFECT, SE, PERSON_2, PLURAL)
-    _g(17, 5, SUBJUNCTIVE, IMPERFECT, SE, PERSON_3, PLURAL)
-
-    _g(21, 1, IMPERATIVE, PRESENT, PERSON_2, SINGULAR)
-    _g(21, 2, IMPERATIVE, PRESENT, PERSON_3, SINGULAR)
-    _g(21, 3, IMPERATIVE, PRESENT, PERSON_1, PLURAL)
-    _g(21, 4, IMPERATIVE, PRESENT, PERSON_2, PLURAL)
-    _g(21, 5, IMPERATIVE, PRESENT, PERSON_3, PLURAL)
+    _g2(8, PRESENT)
+    _g2(9, IMPERFECT)
+    _g2(10, PRETERITE)
+    _g2(11, FUTURE)
+    _g2(12, CONDITIONAL)
+    _g2(15, SUBJUNCTIVE)
+    _g2(16, SUBJUNCTIVE_IMPERFECT)
+    _g2(17, SUBJUNCTIVE_IMPERFECT)
+    _g2(21, IMPERATIVE)
 
     return res
 
@@ -244,193 +203,44 @@ def parse_combined_forms_table(table):
     res = []
     trs = table.find_all('tr')
 
-    def _g(i, j, *types):
-        name = mk_name(types)
-        for item in get_td(trs, i, j):
-            res.append((name, item))
+    # sort suffixes by length in a descending order
+    suffixes = [
+        SUFFIX_ME, SUFFIX_TE, SUFFIX_LE, SUFFIX_LA, SUFFIX_LO, SUFFIX_SE,
+        SUFFIX_NOS, SUFFIX_OS, SUFFIX_LES, SUFFIX_LAS, SUFFIX_LOS
+    ]
+    suffixes.sort(key=lambda s: -len(s))
+
+    def _g(i, t):
+        for j in range(6):
+            for item in get_td(trs, i, j, False):
+                # use longest match
+                for suffix in suffixes:
+                    if item.endswith(suffix):
+                        types = [t, '-' + suffix]
+                        res.append((types, item))
+                        break
 
     if len(trs) == 29:
-        _g(3, 0, COMB_INFINITIVE, DATIVE, PERSON_1, SINGULAR)
-        _g(3, 1, COMB_INFINITIVE, DATIVE, PERSON_2, SINGULAR)
-        _g(3, 2, COMB_INFINITIVE, DATIVE, PERSON_3, SINGULAR)
-        _g(3, 3, COMB_INFINITIVE, DATIVE, PERSON_1, PLURAL)
-        _g(3, 4, COMB_INFINITIVE, DATIVE, PERSON_2, PLURAL)
-        _g(3, 5, COMB_INFINITIVE, DATIVE, PERSON_3, PLURAL)
-
-        _g(4, 0, COMB_INFINITIVE, ACCUSATIVE, PERSON_1, SINGULAR)
-        _g(4, 1, COMB_INFINITIVE, ACCUSATIVE, PERSON_2, SINGULAR)
-        _g(4, 2, COMB_INFINITIVE, ACCUSATIVE, PERSON_3, SINGULAR)
-        _g(4, 3, COMB_INFINITIVE, ACCUSATIVE, PERSON_1, PLURAL)
-        _g(4, 4, COMB_INFINITIVE, ACCUSATIVE, PERSON_2, PLURAL)
-        _g(4, 5, COMB_INFINITIVE, ACCUSATIVE, PERSON_3, PLURAL)
-
-        _g(7, 0, COMB_GERUND, DATIVE, PERSON_1, SINGULAR)
-        _g(7, 1, COMB_GERUND, DATIVE, PERSON_2, SINGULAR)
-        _g(7, 2, COMB_GERUND, DATIVE, PERSON_3, SINGULAR)
-        _g(7, 3, COMB_GERUND, DATIVE, PERSON_1, PLURAL)
-        _g(7, 4, COMB_GERUND, DATIVE, PERSON_2, PLURAL)
-        _g(7, 5, COMB_GERUND, DATIVE, PERSON_3, PLURAL)
-
-        _g(8, 0, COMB_GERUND, ACCUSATIVE, PERSON_1, SINGULAR)
-        _g(8, 1, COMB_GERUND, ACCUSATIVE, PERSON_2, SINGULAR)
-        _g(8, 2, COMB_GERUND, ACCUSATIVE, PERSON_3, SINGULAR)
-        _g(8, 3, COMB_GERUND, ACCUSATIVE, PERSON_1, PLURAL)
-        _g(8, 4, COMB_GERUND, ACCUSATIVE, PERSON_2, PLURAL)
-        _g(8, 5, COMB_GERUND, ACCUSATIVE, PERSON_3, PLURAL)
-
-        _g(11, 0, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, DATIVE,
-           PERSON_1, SINGULAR)
-        _g(11, 1, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, DATIVE,
-           PERSON_2, SINGULAR)
-        _g(11, 2, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, DATIVE,
-           PERSON_3, SINGULAR)
-        _g(11, 3, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, DATIVE,
-           PERSON_1, PLURAL)
-        _g(11, 4, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, DATIVE,
-           PERSON_2, PLURAL)
-        _g(11, 5, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, DATIVE,
-           PERSON_3, PLURAL)
-
-        _g(12, 0, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, ACCUSATIVE,
-           PERSON_1, SINGULAR)
-        _g(12, 1, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, ACCUSATIVE,
-           PERSON_2, SINGULAR)
-        _g(12, 2, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, ACCUSATIVE,
-           PERSON_3, SINGULAR)
-        _g(12, 3, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, ACCUSATIVE,
-           PERSON_1, PLURAL)
-        _g(12, 4, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, ACCUSATIVE,
-           PERSON_2, PLURAL)
-        _g(12, 5, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, INFORMAL, ACCUSATIVE,
-           PERSON_3, PLURAL)
-
-        _g(15, 0, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, DATIVE,
-           PERSON_1, SINGULAR)
-        _g(15, 1, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, DATIVE,
-           PERSON_2, SINGULAR)
-        _g(15, 2, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, DATIVE,
-           PERSON_3, SINGULAR)
-        _g(15, 3, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, DATIVE,
-           PERSON_1, PLURAL)
-        _g(15, 4, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, DATIVE,
-           PERSON_2, PLURAL)
-        _g(15, 5, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, DATIVE,
-           PERSON_3, PLURAL)
-
-        _g(16, 0, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, ACCUSATIVE,
-           PERSON_1, SINGULAR)
-        _g(16, 1, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, ACCUSATIVE,
-           PERSON_2, SINGULAR)
-        _g(16, 2, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, ACCUSATIVE,
-           PERSON_3, SINGULAR)
-        _g(16, 3, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, ACCUSATIVE,
-           PERSON_1, PLURAL)
-        _g(16, 4, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, ACCUSATIVE,
-           PERSON_2, PLURAL)
-        _g(16, 5, COMB_IMPERATIVE, TO_PERSON_2_SINGULAR, FORMAL, ACCUSATIVE,
-           PERSON_3, PLURAL)
-
-        _g(19, 0, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, DATIVE, PERSON_1,
-           SINGULAR)
-        _g(19, 1, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, DATIVE, PERSON_2,
-           SINGULAR)
-        _g(19, 2, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, DATIVE, PERSON_3,
-           SINGULAR)
-        _g(19, 3, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, DATIVE, PERSON_1,
-           PLURAL)
-        _g(19, 4, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, DATIVE, PERSON_2,
-           PLURAL)
-        _g(19, 5, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, DATIVE, PERSON_3,
-           PLURAL)
-
-        _g(20, 0, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, ACCUSATIVE, PERSON_1,
-           SINGULAR)
-        _g(20, 1, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, ACCUSATIVE, PERSON_2,
-           SINGULAR)
-        _g(20, 2, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, ACCUSATIVE, PERSON_3,
-           SINGULAR)
-        _g(20, 3, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, ACCUSATIVE, PERSON_1,
-           PLURAL)
-        _g(20, 4, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, ACCUSATIVE, PERSON_2,
-           PLURAL)
-        _g(20, 5, COMB_IMPERATIVE, TO_PERSON_1_PLURAL, ACCUSATIVE, PERSON_3,
-           PLURAL)
-
-        _g(23, 0, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, DATIVE,
-           PERSON_1, SINGULAR)
-        _g(23, 1, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, DATIVE,
-           PERSON_2, SINGULAR)
-        _g(23, 2, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, DATIVE,
-           PERSON_3, SINGULAR)
-        _g(23, 3, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, DATIVE,
-           PERSON_1, PLURAL)
-        _g(23, 4, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, DATIVE,
-           PERSON_2, PLURAL)
-        _g(23, 5, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, DATIVE,
-           PERSON_3, PLURAL)
-
-        _g(24, 0, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, ACCUSATIVE,
-           PERSON_1, SINGULAR)
-        _g(24, 1, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, ACCUSATIVE,
-           PERSON_2, SINGULAR)
-        _g(24, 2, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, ACCUSATIVE,
-           PERSON_3, SINGULAR)
-        _g(24, 3, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, ACCUSATIVE,
-           PERSON_1, PLURAL)
-        _g(24, 4, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, ACCUSATIVE,
-           PERSON_2, PLURAL)
-        _g(24, 5, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, INFORMAL, ACCUSATIVE,
-           PERSON_3, PLURAL)
-
-        _g(27, 0, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, DATIVE,
-           PERSON_1, SINGULAR)
-        _g(27, 1, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, DATIVE,
-           PERSON_2, SINGULAR)
-        _g(27, 2, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, DATIVE,
-           PERSON_3, SINGULAR)
-        _g(27, 3, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, DATIVE,
-           PERSON_1, PLURAL)
-        _g(27, 4, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, DATIVE,
-           PERSON_2, PLURAL)
-        _g(27, 5, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, DATIVE,
-           PERSON_3, PLURAL)
-
-        _g(28, 0, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, ACCUSATIVE,
-           PERSON_1, SINGULAR)
-        _g(28, 1, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, ACCUSATIVE,
-           PERSON_2, SINGULAR)
-        _g(28, 2, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, ACCUSATIVE,
-           PERSON_3, SINGULAR)
-        _g(28, 3, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, ACCUSATIVE,
-           PERSON_1, PLURAL)
-        _g(28, 4, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, ACCUSATIVE,
-           PERSON_2, PLURAL)
-        _g(28, 5, COMB_IMPERATIVE, TO_PERSON_2_PLURAL, FORMAL, ACCUSATIVE,
-           PERSON_3, PLURAL)
-
+        _g(3, INFINITIVE)
+        _g(4, INFINITIVE)
+        _g(7, GERUND)
+        _g(8, GERUND)
+        _g(11, IMPERATIVE)
+        _g(12, IMPERATIVE)
+        _g(15, IMPERATIVE)
+        _g(16, IMPERATIVE)
+        _g(19, IMPERATIVE)
+        _g(20, IMPERATIVE)
+        _g(23, IMPERATIVE)
+        _g(24, IMPERATIVE)
+        _g(27, IMPERATIVE)
+        _g(28, IMPERATIVE)
     else:
         assert len(trs) == 10, 'Unfamiliar number of rows: ' + str(len(trs))
 
-        _g(3, 0, COMB_INFINITIVE, ACCUSATIVE, PERSON_1, SINGULAR)
-        _g(3, 1, COMB_INFINITIVE, ACCUSATIVE, PERSON_2, SINGULAR)
-        _g(3, 2, COMB_INFINITIVE, ACCUSATIVE, PERSON_3, SINGULAR)
-        _g(3, 3, COMB_INFINITIVE, ACCUSATIVE, PERSON_1, PLURAL)
-        _g(3, 4, COMB_INFINITIVE, ACCUSATIVE, PERSON_2, PLURAL)
-        _g(3, 5, COMB_INFINITIVE, ACCUSATIVE, PERSON_3, PLURAL)
-
-        _g(6, 0, COMB_GERUND, ACCUSATIVE, PERSON_1, SINGULAR)
-        _g(6, 1, COMB_GERUND, ACCUSATIVE, PERSON_2, SINGULAR)
-        _g(6, 2, COMB_GERUND, ACCUSATIVE, PERSON_3, SINGULAR)
-        _g(6, 3, COMB_GERUND, ACCUSATIVE, PERSON_1, PLURAL)
-        _g(6, 4, COMB_GERUND, ACCUSATIVE, PERSON_2, PLURAL)
-        _g(6, 5, COMB_GERUND, ACCUSATIVE, PERSON_3, PLURAL)
-
-        _g(9, 0, COMB_IMPERATIVE, ACCUSATIVE, PERSON_1, SINGULAR)
-        _g(9, 1, COMB_IMPERATIVE, ACCUSATIVE, PERSON_2, SINGULAR)
-        _g(9, 2, COMB_IMPERATIVE, ACCUSATIVE, PERSON_3, SINGULAR)
-        _g(9, 3, COMB_IMPERATIVE, ACCUSATIVE, PERSON_1, PLURAL)
-        _g(9, 4, COMB_IMPERATIVE, ACCUSATIVE, PERSON_2, PLURAL)
-        _g(9, 5, COMB_IMPERATIVE, ACCUSATIVE, PERSON_3, PLURAL)
+        _g(3, INFINITIVE)
+        _g(6, GERUND)
+        _g(9, IMPERATIVE)
 
     return res
 

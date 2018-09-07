@@ -40,6 +40,7 @@ def main(args):
     for objs in map_func(process, get_paths()):
         for obj in objs:
             print(json.dumps(obj))
+            sys.stdout.flush()
 
 
 def clean(root):
@@ -55,13 +56,7 @@ def extract(headline, node):
         if headline.startswith(name):
             form, attrs, variants, definitions = extractor(node)
             if len(definitions) > 0:
-                obj = {
-                    'pos': pos,
-                    'attrs': attrs,
-                    'form': form,
-                    'variants': variants,
-                    'defs': definitions,
-                }
+                obj = [form, pos, attrs, variants, definitions]
                 objs.append(obj)
     return objs
 
@@ -80,9 +75,7 @@ def process(path):
                         try:
                             objs.extend(extract(span.text, child))
                         except Exception as ex:
-                            print(
-                                'Error: ' + path,
-                                file=sys.stderr)
+                            print('Error: ' + path, file=sys.stderr)
                             print(ex, file=sys.stderr)
                             import traceback
                             print(traceback.format_exc(), file=sys.stderr)
