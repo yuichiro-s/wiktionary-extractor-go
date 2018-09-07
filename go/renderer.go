@@ -97,7 +97,7 @@ func request(client *http.Client, url string, entry LangEntry) (*string, error) 
 	}
 
 	if res.StatusCode != 200 {
-		return nil, errors.New(fmt.Sprintf("Status not 200 OK: %d %s", res.StatusCode, str))
+		return nil, fmt.Errorf("status not 200 OK: %d %s", res.StatusCode, str)
 	}
 
 	// decode JSON
@@ -111,6 +111,10 @@ func request(client *http.Client, url string, entry LangEntry) (*string, error) 
 		return nil, err
 	}
 	renderedText := body.Parse.Text["*"]
+
+	if len(renderedText) == 0 {
+		return nil, errors.New("empty response text")
+	}
 
 	// detect Lua error
 	matches := r.FindSubmatch([]byte(renderedText))
