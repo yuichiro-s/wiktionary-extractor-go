@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// LangEntry represents a section of a specific language on a Wiktionary page.
 type LangEntry struct {
 	title      string
 	oldid      string
@@ -23,7 +24,7 @@ func readDump(dumpPath string, lang Lang) <-chan LangEntry {
 
 	go func() {
 		decoder := xml.NewDecoder(dumpFile)
-		var currentId string
+		var currentID string
 		var currentTitle string
 		var currentText string
 		var tags []string
@@ -44,7 +45,7 @@ func readDump(dumpPath string, lang Lang) <-chan LangEntry {
 					if lastTag == "title" {
 						currentTitle = string(e)
 					} else if len(tags) >= 2 && lastTag == "id" && tags[len(tags)-2] == "revision" {
-						currentId = string(e)
+						currentID = string(e)
 					} else if lastTag == "text" {
 						currentText = string(e)
 					}
@@ -54,7 +55,7 @@ func readDump(dumpPath string, lang Lang) <-chan LangEntry {
 				if e.Name.Local == "revision" {
 					sectionNum := getSectionNumber(currentText, lang)
 					if sectionNum > 0 {
-						entries <- LangEntry{title: currentTitle, oldid: currentId, sectionNum: sectionNum}
+						entries <- LangEntry{title: currentTitle, oldid: currentID, sectionNum: sectionNum}
 					}
 				}
 			}

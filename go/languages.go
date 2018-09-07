@@ -1,14 +1,22 @@
 package main
 
+// Lang represents a language.
 type Lang int
 
 const (
+	// UnknownLanguage represents that the language is unknown.
 	UnknownLanguage Lang = iota
+	// EnEs represents Spanish entries on English Wiktionary.
 	EnEs
+	// EnEn represents English entries on English Wiktionary.
 	EnEn
+	// EnDe represents German entries on English Wiktionary.
 	EnDe
+	// EnZh represents Chinese entries on English Wiktionary.
 	EnZh
+	// EnKo represents Korean entries on English Wiktionary.
 	EnKo
+	// JaKo represents Korean entries on Japanese Wiktionary.
 	JaKo
 )
 

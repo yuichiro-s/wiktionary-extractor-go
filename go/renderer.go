@@ -12,11 +12,13 @@ import (
 	"sync"
 )
 
+// EntryRenderer renders pages on 'urls' using 'workerNum' number of workers.
 type EntryRenderer struct {
 	urls      []string
 	workerNum int
 }
 
+// RenderedEntry represents an entry rendered as HTML.
 type RenderedEntry struct {
 	title string
 	id    string
