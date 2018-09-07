@@ -57,8 +57,9 @@ func main() {
 	go func() {
 		for langEntry := range langEntries {
 			p := makePath(outDir, langEntry.oldid)
-			if _, err := os.Stat(p); os.IsNotExist(err) {
+			if fi, err := os.Stat(p); os.IsNotExist(err) || fi.Size() == 0 {
 				newLangEntries <- langEntry
+				log.Println("To download: " + p)
 			} else {
 				log.Println("Already exists, skipped: " + p)
 			}
