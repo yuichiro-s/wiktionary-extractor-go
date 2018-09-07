@@ -65,7 +65,9 @@ def filter_variants(variants, supported_variants):
     new_variants = []
     for variant_type, variant_form in variants:
         if variant_type in supported_variants:
-            new_variants.append(mk_variant_entry(variant_type, variant_form))
+            new_variant_type = mk_name(supported_variants[variant_type])
+            new_variants.append(
+                mk_variant_entry(new_variant_type, variant_form))
         else:
             logging.warning("Unknown variant type: " + variant_type)
     return new_variants
