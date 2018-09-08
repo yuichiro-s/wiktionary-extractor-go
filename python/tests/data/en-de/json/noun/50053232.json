@@ -1,0 +1,52 @@
+[
+    {
+        "attrs": [
+            "m"
+        ],
+        "defs": [
+            "dog, hound",
+            "(derogatory) scoundrel; dog (mean or morally reprehensible person)",
+            "board with casters used to transport heavy objects"
+        ],
+        "lemma": "Hund",
+        "pos": "noun",
+        "variants": [
+            {
+                "form": "Hundes",
+                "type": []
+            },
+            {
+                "form": "Hunds",
+                "type": []
+            },
+            {
+                "form": "Hunde ",
+                "type": []
+            },
+            {
+                "form": "H\u00fcndchen",
+                "type": [
+                    "DIM"
+                ]
+            },
+            {
+                "form": "H\u00fcndlein",
+                "type": [
+                    "DIM"
+                ]
+            },
+            {
+                "form": "Hund",
+                "type": []
+            },
+            {
+                "form": "Hunde",
+                "type": []
+            },
+            {
+                "form": "Hunden",
+                "type": []
+            }
+        ]
+    }
+]

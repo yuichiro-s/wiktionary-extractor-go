@@ -1,5 +1,6 @@
 import os
 import json
+import warnings
 
 from wiktionary_extractor.extractor import extract_from_path
 from wiktionary_extractor.util import get_extractors
@@ -59,9 +60,10 @@ def list_test_data(lang):
     datadir = get_test_data_dir_path()
     base_dir_path = os.path.join(datadir, lang)
     html_dir_path = os.path.join(base_dir_path, 'html')
-    for name in os.listdir(html_dir_path):
-        html_path = os.path.join(html_dir_path, name)
-        yield html_path
+    for root, dirs, files in os.walk(html_dir_path):
+        for name in files:
+            html_path = os.path.join(root, name)
+            yield html_path
 
 
 def run_extractors_on_test_data(lang):
@@ -72,10 +74,9 @@ def run_extractors_on_test_data(lang):
         yield html_path, parsed
 
 
-def run_test(lang):
-    for html_path, parsed in run_extractors_on_test_data(lang):
-        json_path = html_path.replace('html', 'json')
-        with open(json_path) as json_file:
-            correct = json.load(json_file)
-            correct_entries = list(map(Entry.deconvert, correct))
-            assert_equal(correct_entries, parsed)
+def assert_correct(html_path, parsed):
+    json_path = html_path.replace('html', 'json')
+    with open(json_path) as json_file:
+        correct = json.load(json_file)
+        correct_entries = list(map(Entry.deconvert, correct))
+        assert_equal(correct_entries, parsed)

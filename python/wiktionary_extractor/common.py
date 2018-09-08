@@ -1,3 +1,6 @@
+import logging
+
+
 def get_next(tag, name):
     tag = tag.next_sibling
     while tag is not None and getattr(tag, 'name', None) != name:
@@ -12,7 +15,7 @@ def extract_tables(node):
         if div is None:
             break
         if 'NavFrame' in div.get('class'):
-            head = div.div.text
+            head = div.div.text.strip()
             table = div.table
             yield head, table
 
@@ -93,13 +96,30 @@ def default_extractor(node, parse_variants=False, extract_attrs=None):
     return form, attrs, variants, definitions
 
 
-def remove_duplicates(lst):
+def filter_variants(variants, supported_variants):
+    new_variants = []
+    for variant_type, variant_form in variants:
+        if variant_type in supported_variants:
+            new_variant_type = supported_variants[variant_type]
+            new_variants.append((new_variant_type, variant_form))
+        else:
+            assert False, "Unknown variant type: " + variant_type
+    return new_variants
+
+
+def get_th(trs, i, j):
+    ths = trs[i].find_all('th')
+    th = ths[j]
+    return th.text.strip()
+
+
+def get_cell(trs, i, j, direct=False, tag='span'):
+    tds = trs[i].find_all('td')
     res = []
-    # filter out duplicates
-    hs = set()
-    for e in lst:
-        h = str(e)
-        if h not in hs:
-            hs.add(h)
-            res.append(e)
+    td = tds[j]
+    if direct:
+        res.append(td.text.strip())
+    else:
+        for tag in td.find_all(tag):
+            res.append(tag.text.strip())
     return res

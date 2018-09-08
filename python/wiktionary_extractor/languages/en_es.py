@@ -1,6 +1,4 @@
-import logging
-
-from wiktionary_extractor.common import default_extractor, extract_tables, remove_duplicates
+from wiktionary_extractor.common import default_extractor, extract_tables, filter_variants, get_cell
 
 # person
 PERSON_1_SINGULAR = '1s'
@@ -50,17 +48,6 @@ UNCOUNTABLE = 'uncountable'
 SUPERLATIVE = 'SUP'
 
 
-def filter_variants(variants, supported_variants):
-    new_variants = []
-    for variant_type, variant_form in variants:
-        if variant_type in supported_variants:
-            new_variant_type = supported_variants[variant_type]
-            new_variants.append((new_variant_type, variant_form))
-        else:
-            logging.warning("Unknown variant type: " + variant_type)
-    return new_variants
-
-
 def noun_extractor(node):
     def extract_attrs(p):
         new_attrs = []
@@ -71,16 +58,17 @@ def noun_extractor(node):
                         new_attrs.append(a.text)
         return new_attrs
 
-    form, attrs, variants, definitions = default_extractor(node, True,
-                                                           extract_attrs)
+    form, attrs, variants, definitions = default_extractor(
+        node, True, extract_attrs)
 
-    variants = filter_variants(variants, {
-        "plural": [PLURAL],
-        "feminine plural": [FEMININE, PLURAL],
-        "feminine": [FEMININE],
-        "masculine plural": [MASCULINE, PLURAL],
-        "masculine": [MASCULINE],
-    })
+    variants = filter_variants(
+        variants, {
+            "plural": [PLURAL],
+            "feminine plural": [FEMININE, PLURAL],
+            "feminine": [FEMININE],
+            "masculine plural": [MASCULINE, PLURAL],
+            "masculine": [MASCULINE],
+        })
 
     return form, attrs, variants, definitions
 
@@ -88,14 +76,15 @@ def noun_extractor(node):
 def adjective_extractor(node):
     form, attrs, variants, definitions = default_extractor(node, True)
 
-    variants = filter_variants(variants, {
-        "plural": [PLURAL],
-        "feminine singular": [FEMININE],
-        "feminine plural": [FEMININE, PLURAL],
-        "feminine": [FEMININE],
-        "masculine plural": [MASCULINE, PLURAL],
-        "superlative": [SUPERLATIVE],
-    })
+    variants = filter_variants(
+        variants, {
+            "plural": [PLURAL],
+            "feminine singular": [FEMININE],
+            "feminine plural": [FEMININE, PLURAL],
+            "feminine": [FEMININE],
+            "masculine plural": [MASCULINE, PLURAL],
+            "superlative": [SUPERLATIVE],
+        })
 
     return form, attrs, variants, definitions
 
@@ -122,21 +111,9 @@ def verb_extractor(node):
             conjugations.append((conj_type, conj_form))
 
     if conjugations:
-        variants = remove_duplicates(new_conjugations)
+        variants = conjugations
 
     return form, attrs, variants, definitions
-
-
-def get_td(trs, i, j, is_reflexive):
-    tds = trs[i].find_all('td')
-    res = []
-    td = tds[j]
-    if is_reflexive:
-        res.append(td.text.strip())
-    else:
-        for span in td.find_all('span'):
-            res.append(span.text.strip())
-    return res
 
 
 def parse_conjugation_table(table, is_reflexive):
@@ -144,7 +121,7 @@ def parse_conjugation_table(table, is_reflexive):
     trs = table.find_all('tr')
 
     def _g(i, j, *types):
-        for item in get_td(trs, i, j, is_reflexive):
+        for item in get_cell(trs, i, j, is_reflexive):
             res.append((types, item))
 
     def _g2(i, t):
@@ -153,7 +130,7 @@ def parse_conjugation_table(table, is_reflexive):
             PERSON_1_PLURAL, PERSON_2_PLURAL, PERSON_3_PLURAL
         ]
         for j, person in enumerate(persons):
-            for item in get_td(trs, i, j, is_reflexive):
+            for item in get_cell(trs, i, j, is_reflexive):
                 res.append(([t, person], item))
 
     _g(0, 0, INFINITIVE)
@@ -190,7 +167,7 @@ def parse_combined_forms_table(table):
 
     def _g(i, t):
         for j in range(6):
-            for item in get_td(trs, i, j, False):
+            for item in get_cell(trs, i, j, False):
                 # use longest match
                 for suffix in suffixes:
                     if item.endswith(suffix):

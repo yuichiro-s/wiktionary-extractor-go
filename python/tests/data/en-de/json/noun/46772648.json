@@ -1,0 +1,26 @@
+[
+    {
+        "attrs": [
+            "m"
+        ],
+        "defs": [
+            "fiddler, violinist"
+        ],
+        "lemma": "Geiger",
+        "pos": "noun",
+        "variants": [
+            {
+                "form": "Geigers",
+                "type": []
+            },
+            {
+                "form": "Geiger",
+                "type": []
+            },
+            {
+                "form": "Geigern",
+                "type": []
+            }
+        ]
+    }
+]

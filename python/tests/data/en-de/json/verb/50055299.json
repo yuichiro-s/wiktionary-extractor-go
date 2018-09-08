@@ -1,0 +1,281 @@
+[
+    {
+        "attrs": [
+            "haben"
+        ],
+        "defs": [
+            "to count (to determine the number of objects in a group)",
+            "to count (to enumerate the digits of one's numeral system)",
+            "to count (to be of significance; to matter)",
+            "to count, to be reckoned (to be an example of something)"
+        ],
+        "lemma": "z\u00e4hlen",
+        "pos": "verb",
+        "variants": [
+            {
+                "form": "z\u00e4hlen",
+                "type": [
+                    "INF"
+                ]
+            },
+            {
+                "form": "z\u00e4hlend",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "gez\u00e4hlt",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "z\u00e4hle",
+                "type": [
+                    "PRES",
+                    "1s"
+                ]
+            },
+            {
+                "form": "z\u00e4hlen",
+                "type": [
+                    "PRES",
+                    "1p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlst",
+                "type": [
+                    "PRES",
+                    "2s"
+                ]
+            },
+            {
+                "form": "z\u00e4hlt",
+                "type": [
+                    "PRES",
+                    "2p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlt",
+                "type": [
+                    "PRES",
+                    "3s"
+                ]
+            },
+            {
+                "form": "z\u00e4hlen",
+                "type": [
+                    "PRES",
+                    "3p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlte",
+                "type": [
+                    "PRET",
+                    "1s"
+                ]
+            },
+            {
+                "form": "z\u00e4hlten",
+                "type": [
+                    "PRET",
+                    "1p"
+                ]
+            },
+            {
+                "form": "z\u00e4hltest",
+                "type": [
+                    "PRET",
+                    "2s"
+                ]
+            },
+            {
+                "form": "z\u00e4hltet",
+                "type": [
+                    "PRET",
+                    "2p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlte",
+                "type": [
+                    "PRET",
+                    "3s"
+                ]
+            },
+            {
+                "form": "z\u00e4hlten",
+                "type": [
+                    "PRET",
+                    "3p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlen",
+                "type": [
+                    "SBJV-I",
+                    "1s"
+                ]
+            },
+            {
+                "form": "z\u00e4hle",
+                "type": [
+                    "SBJV-I",
+                    "1p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlt",
+                "type": [
+                    "SBJV-I",
+                    "2s"
+                ]
+            },
+            {
+                "form": "z\u00e4hlest",
+                "type": [
+                    "SBJV-I",
+                    "2p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlen",
+                "type": [
+                    "SBJV-I",
+                    "3s"
+                ]
+            },
+            {
+                "form": "z\u00e4hle",
+                "type": [
+                    "SBJV-I",
+                    "3p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlten",
+                "type": [
+                    "SBJV-II",
+                    "1s"
+                ]
+            },
+            {
+                "form": "z\u00e4hlte",
+                "type": [
+                    "SBJV-II",
+                    "1p"
+                ]
+            },
+            {
+                "form": "z\u00e4hltet",
+                "type": [
+                    "SBJV-II",
+                    "2s"
+                ]
+            },
+            {
+                "form": "z\u00e4hltest",
+                "type": [
+                    "SBJV-II",
+                    "2p"
+                ]
+            },
+            {
+                "form": "z\u00e4hlten",
+                "type": [
+                    "SBJV-II",
+                    "3s"
+                ]
+            },
+            {
+                "form": "z\u00e4hlte",
+                "type": [
+                    "SBJV-II",
+                    "3p"
+                ]
+            },
+            {
+                "form": "z\u00e4hl",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "z\u00e4hle",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "z\u00e4hlt",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "gez\u00e4hlte",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "gez\u00e4hltem",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "gez\u00e4hlten",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "gez\u00e4hlter",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "gez\u00e4hltes",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "z\u00e4hlende",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "z\u00e4hlendem",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "z\u00e4hlenden",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "z\u00e4hlender",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "z\u00e4hlendes",
+                "type": [
+                    "PRESP"
+                ]
+            }
+        ]
+    }
+]

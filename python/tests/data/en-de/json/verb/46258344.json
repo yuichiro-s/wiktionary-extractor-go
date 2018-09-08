@@ -1,0 +1,279 @@
+[
+    {
+        "attrs": [
+            "haben"
+        ],
+        "defs": [
+            "(transitive) to close; to shut; to lock",
+            "(transitive) to lock (something) up"
+        ],
+        "lemma": "verschlie\u00dfen",
+        "pos": "verb",
+        "variants": [
+            {
+                "form": "verschlie\u00dfen",
+                "type": [
+                    "INF"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfend",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "verschlossen",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfe",
+                "type": [
+                    "PRES",
+                    "1s"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfen",
+                "type": [
+                    "PRES",
+                    "1p"
+                ]
+            },
+            {
+                "form": "verschlie\u00dft",
+                "type": [
+                    "PRES",
+                    "2s"
+                ]
+            },
+            {
+                "form": "verschlie\u00dft",
+                "type": [
+                    "PRES",
+                    "2p"
+                ]
+            },
+            {
+                "form": "verschlie\u00dft",
+                "type": [
+                    "PRES",
+                    "3s"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfen",
+                "type": [
+                    "PRES",
+                    "3p"
+                ]
+            },
+            {
+                "form": "verschloss",
+                "type": [
+                    "PRET",
+                    "1s"
+                ]
+            },
+            {
+                "form": "verschlossen",
+                "type": [
+                    "PRET",
+                    "1p"
+                ]
+            },
+            {
+                "form": "verschlossest",
+                "type": [
+                    "PRET",
+                    "2s"
+                ]
+            },
+            {
+                "form": "verschlosst",
+                "type": [
+                    "PRET",
+                    "2p"
+                ]
+            },
+            {
+                "form": "verschloss",
+                "type": [
+                    "PRET",
+                    "3s"
+                ]
+            },
+            {
+                "form": "verschlossen",
+                "type": [
+                    "PRET",
+                    "3p"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfen",
+                "type": [
+                    "SBJV-I",
+                    "1s"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfe",
+                "type": [
+                    "SBJV-I",
+                    "1p"
+                ]
+            },
+            {
+                "form": "verschlie\u00dft",
+                "type": [
+                    "SBJV-I",
+                    "2s"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfest",
+                "type": [
+                    "SBJV-I",
+                    "2p"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfen",
+                "type": [
+                    "SBJV-I",
+                    "3s"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfe",
+                "type": [
+                    "SBJV-I",
+                    "3p"
+                ]
+            },
+            {
+                "form": "verschlossen",
+                "type": [
+                    "SBJV-II",
+                    "1s"
+                ]
+            },
+            {
+                "form": "verschl\u00f6sse",
+                "type": [
+                    "SBJV-II",
+                    "1p"
+                ]
+            },
+            {
+                "form": "verschlosst",
+                "type": [
+                    "SBJV-II",
+                    "2s"
+                ]
+            },
+            {
+                "form": "verschl\u00f6ssest",
+                "type": [
+                    "SBJV-II",
+                    "2p"
+                ]
+            },
+            {
+                "form": "verschlossen",
+                "type": [
+                    "SBJV-II",
+                    "3s"
+                ]
+            },
+            {
+                "form": "verschl\u00f6sse",
+                "type": [
+                    "SBJV-II",
+                    "3p"
+                ]
+            },
+            {
+                "form": "verschlie\u00df",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfe",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "verschlie\u00dft",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "verschlossene",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "verschlossenem",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "verschlossenen",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "verschlossener",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "verschlossenes",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfende",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfendem",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfenden",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfender",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "verschlie\u00dfendes",
+                "type": [
+                    "PRESP"
+                ]
+            }
+        ]
+    }
+]

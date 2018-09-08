@@ -1,0 +1,26 @@
+[
+    {
+        "attrs": [
+            "m"
+        ],
+        "defs": [
+            "Japanese (person)"
+        ],
+        "lemma": "Japaner",
+        "pos": "noun",
+        "variants": [
+            {
+                "form": "Japaners",
+                "type": []
+            },
+            {
+                "form": "Japaner",
+                "type": []
+            },
+            {
+                "form": "Japanern",
+                "type": []
+            }
+        ]
+    }
+]

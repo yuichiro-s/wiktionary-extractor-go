@@ -1,0 +1,108 @@
+[
+    {
+        "attrs": [],
+        "defs": [
+            "enigmatic"
+        ],
+        "lemma": "enigmatisch",
+        "pos": "adjective",
+        "variants": [
+            {
+                "form": "enigmatischer",
+                "type": [
+                    "COMP"
+                ]
+            },
+            {
+                "form": "am enigmatischsten",
+                "type": [
+                    "SUP"
+                ]
+            },
+            {
+                "form": "enigmatisch",
+                "type": []
+            },
+            {
+                "form": "enigmatischer",
+                "type": []
+            },
+            {
+                "form": "enigmatische",
+                "type": []
+            },
+            {
+                "form": "enigmatisches",
+                "type": []
+            },
+            {
+                "form": "enigmatischen",
+                "type": []
+            },
+            {
+                "form": "enigmatischem",
+                "type": []
+            },
+            {
+                "form": "enigmatischerer",
+                "type": [
+                    "COMP"
+                ]
+            },
+            {
+                "form": "enigmatischere",
+                "type": [
+                    "COMP"
+                ]
+            },
+            {
+                "form": "enigmatischeres",
+                "type": [
+                    "COMP"
+                ]
+            },
+            {
+                "form": "enigmatischeren",
+                "type": [
+                    "COMP"
+                ]
+            },
+            {
+                "form": "enigmatischerem",
+                "type": [
+                    "COMP"
+                ]
+            },
+            {
+                "form": "enigmatischsten",
+                "type": [
+                    "SUP"
+                ]
+            },
+            {
+                "form": "enigmatischster",
+                "type": [
+                    "SUP"
+                ]
+            },
+            {
+                "form": "enigmatischste",
+                "type": [
+                    "SUP"
+                ]
+            },
+            {
+                "form": "enigmatischstes",
+                "type": [
+                    "SUP"
+                ]
+            },
+            {
+                "form": "enigmatischstem",
+                "type": [
+                    "SUP"
+                ]
+            }
+        ]
+    }
+]

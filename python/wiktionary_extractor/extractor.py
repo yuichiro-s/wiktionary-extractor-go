@@ -31,11 +31,24 @@ def extract_entries(path):
                         yield headline, child
 
 
+def remove_duplicates(lst):
+    res = []
+    # filter out duplicates
+    hs = set()
+    for e in lst:
+        h = str(e)
+        if h not in hs:
+            hs.add(h)
+            res.append(e)
+    return res
+
+
 def extract(extractors, headline, node):
     objs = []
     for name, (pos, extractor) in extractors.items():
         if headline.startswith(name):
             form, attrs, variants, definitions = extractor(node)
+            variants = remove_duplicates(variants)
             if len(definitions) > 0:
                 obj = [form, pos, attrs, variants, definitions]
                 objs.append(obj)

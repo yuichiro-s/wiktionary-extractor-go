@@ -1,0 +1,453 @@
+[
+    {
+        "attrs": [
+            "sein"
+        ],
+        "defs": [
+            "(with auf) to come towards, come up to; to approach",
+            "to become, befit"
+        ],
+        "lemma": "zu|kommen",
+        "pos": "verb",
+        "variants": [
+            {
+                "form": "zuzukommen",
+                "type": [
+                    "ZU-INF"
+                ]
+            },
+            {
+                "form": "zukommen",
+                "type": [
+                    "INF"
+                ]
+            },
+            {
+                "form": "zukommend",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "zugekommen",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "komme zu",
+                "type": [
+                    "PRES",
+                    "1s"
+                ]
+            },
+            {
+                "form": "kommen zu",
+                "type": [
+                    "PRES",
+                    "1p"
+                ]
+            },
+            {
+                "form": "kommst zu",
+                "type": [
+                    "PRES",
+                    "2s"
+                ]
+            },
+            {
+                "form": "kommt zu",
+                "type": [
+                    "PRES",
+                    "2p"
+                ]
+            },
+            {
+                "form": "kommt zu",
+                "type": [
+                    "PRES",
+                    "3s"
+                ]
+            },
+            {
+                "form": "kommen zu",
+                "type": [
+                    "PRES",
+                    "3p"
+                ]
+            },
+            {
+                "form": "kam zu",
+                "type": [
+                    "PRET",
+                    "1s"
+                ]
+            },
+            {
+                "form": "kamen zu",
+                "type": [
+                    "PRET",
+                    "1p"
+                ]
+            },
+            {
+                "form": "kamst zu",
+                "type": [
+                    "PRET",
+                    "2s"
+                ]
+            },
+            {
+                "form": "kamt zu",
+                "type": [
+                    "PRET",
+                    "2p"
+                ]
+            },
+            {
+                "form": "kam zu",
+                "type": [
+                    "PRET",
+                    "3s"
+                ]
+            },
+            {
+                "form": "kamen zu",
+                "type": [
+                    "PRET",
+                    "3p"
+                ]
+            },
+            {
+                "form": "kommen zu",
+                "type": [
+                    "SBJV-I",
+                    "1s"
+                ]
+            },
+            {
+                "form": "komme zu",
+                "type": [
+                    "SBJV-I",
+                    "1p"
+                ]
+            },
+            {
+                "form": "kommt zu",
+                "type": [
+                    "SBJV-I",
+                    "2s"
+                ]
+            },
+            {
+                "form": "kommest zu",
+                "type": [
+                    "SBJV-I",
+                    "2p"
+                ]
+            },
+            {
+                "form": "kommen zu",
+                "type": [
+                    "SBJV-I",
+                    "3s"
+                ]
+            },
+            {
+                "form": "komme zu",
+                "type": [
+                    "SBJV-I",
+                    "3p"
+                ]
+            },
+            {
+                "form": "kamen zu",
+                "type": [
+                    "SBJV-II",
+                    "1s"
+                ]
+            },
+            {
+                "form": "k\u00e4me zu",
+                "type": [
+                    "SBJV-II",
+                    "1p"
+                ]
+            },
+            {
+                "form": "kamt zu",
+                "type": [
+                    "SBJV-II",
+                    "2s"
+                ]
+            },
+            {
+                "form": "k\u00e4mest zu",
+                "type": [
+                    "SBJV-II",
+                    "2p"
+                ]
+            },
+            {
+                "form": "kamen zu",
+                "type": [
+                    "SBJV-II",
+                    "3s"
+                ]
+            },
+            {
+                "form": "k\u00e4me zu",
+                "type": [
+                    "SBJV-II",
+                    "3p"
+                ]
+            },
+            {
+                "form": "komm zu",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "komme zu",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "kommt zu",
+                "type": [
+                    "IMP"
+                ]
+            },
+            {
+                "form": "zukomme",
+                "type": [
+                    "PRES",
+                    "1s"
+                ]
+            },
+            {
+                "form": "zukommen",
+                "type": [
+                    "PRES",
+                    "1p"
+                ]
+            },
+            {
+                "form": "zukommst",
+                "type": [
+                    "PRES",
+                    "2s"
+                ]
+            },
+            {
+                "form": "zukommt",
+                "type": [
+                    "PRES",
+                    "2p"
+                ]
+            },
+            {
+                "form": "zukommt",
+                "type": [
+                    "PRES",
+                    "3s"
+                ]
+            },
+            {
+                "form": "zukommen",
+                "type": [
+                    "PRES",
+                    "3p"
+                ]
+            },
+            {
+                "form": "zukam",
+                "type": [
+                    "PRET",
+                    "1s"
+                ]
+            },
+            {
+                "form": "zukamen",
+                "type": [
+                    "PRET",
+                    "1p"
+                ]
+            },
+            {
+                "form": "zukamst",
+                "type": [
+                    "PRET",
+                    "2s"
+                ]
+            },
+            {
+                "form": "zukamt",
+                "type": [
+                    "PRET",
+                    "2p"
+                ]
+            },
+            {
+                "form": "zukam",
+                "type": [
+                    "PRET",
+                    "3s"
+                ]
+            },
+            {
+                "form": "zukamen",
+                "type": [
+                    "PRET",
+                    "3p"
+                ]
+            },
+            {
+                "form": "zukommen",
+                "type": [
+                    "SBJV-I",
+                    "1s"
+                ]
+            },
+            {
+                "form": "zukomme",
+                "type": [
+                    "SBJV-I",
+                    "1p"
+                ]
+            },
+            {
+                "form": "zukommt",
+                "type": [
+                    "SBJV-I",
+                    "2s"
+                ]
+            },
+            {
+                "form": "zukommest",
+                "type": [
+                    "SBJV-I",
+                    "2p"
+                ]
+            },
+            {
+                "form": "zukommen",
+                "type": [
+                    "SBJV-I",
+                    "3s"
+                ]
+            },
+            {
+                "form": "zukomme",
+                "type": [
+                    "SBJV-I",
+                    "3p"
+                ]
+            },
+            {
+                "form": "zukamen",
+                "type": [
+                    "SBJV-II",
+                    "1s"
+                ]
+            },
+            {
+                "form": "zuk\u00e4me",
+                "type": [
+                    "SBJV-II",
+                    "1p"
+                ]
+            },
+            {
+                "form": "zukamt",
+                "type": [
+                    "SBJV-II",
+                    "2s"
+                ]
+            },
+            {
+                "form": "zuk\u00e4mest",
+                "type": [
+                    "SBJV-II",
+                    "2p"
+                ]
+            },
+            {
+                "form": "zukamen",
+                "type": [
+                    "SBJV-II",
+                    "3s"
+                ]
+            },
+            {
+                "form": "zuk\u00e4me",
+                "type": [
+                    "SBJV-II",
+                    "3p"
+                ]
+            },
+            {
+                "form": "zugekommene",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "zugekommenem",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "zugekommenen",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "zugekommener",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "zugekommenes",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "zukommende",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "zukommendem",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "zukommenden",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "zukommender",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "zukommendes",
+                "type": [
+                    "PRESP"
+                ]
+            }
+        ]
+    }
+]

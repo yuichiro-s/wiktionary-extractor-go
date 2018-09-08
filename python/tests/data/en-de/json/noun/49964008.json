@@ -1,0 +1,22 @@
+[
+    {
+        "attrs": [
+            "n"
+        ],
+        "defs": [
+            "car"
+        ],
+        "lemma": "Auto",
+        "pos": "noun",
+        "variants": [
+            {
+                "form": "Autos",
+                "type": []
+            },
+            {
+                "form": "Auto",
+                "type": []
+            }
+        ]
+    }
+]
