@@ -1,6 +1,6 @@
 import logging
 
-from extractors.common import default_extractor, get_next
+from wiktionary_extractor.common import default_extractor, get_next, extract_tables, remove_duplicates
 
 # person
 PERSON_1_SINGULAR = '1s'
@@ -114,37 +114,22 @@ def verb_extractor(node):
     definitions = list(filter(lambda d: 'Compound of ' not in d, definitions))
 
     # parse conjugation table
-    div = node
     conjugations = []
-    while True:
-        div = get_next(div, 'div')
-        if div is None:
-            break
-        if 'NavFrame' in div.get('class'):
-            head = div.div.text
-            new_conjugations = []
-            is_reflexive = form + 'se' in head or form.endswith('se')
-            if 'Conjugation of ' + form in head:
-                new_conjugations = parse_conjugation_table(
-                    div.table, is_reflexive)
-            elif not is_reflexive and 'Selected combined forms of ' + form in head:
-                # don't parse combined form table of a reflexive verb because it's the same as non-reflexive version
-                new_conjugations = parse_combined_forms_table(div.table)
-            for conj_type, conj_form in new_conjugations:
-                if is_reflexive:
-                    conj_type = [REFLEXIVE, *conj_type]
-                conjugations.append(mk_variant_entry(conj_type, conj_form))
+    for head, table in extract_tables(node):
+        new_conjugations = []
+        is_reflexive = form + 'se' in head or form.endswith('se')
+        if 'Conjugation of ' + form in head:
+            new_conjugations = parse_conjugation_table(table, is_reflexive)
+        elif not is_reflexive and 'Selected combined forms of ' + form in head:
+            # don't parse combined form table of a reflexive verb because it's the same as non-reflexive version
+            new_conjugations = parse_combined_forms_table(table)
+        for conj_type, conj_form in new_conjugations:
+            if is_reflexive:
+                conj_type = [REFLEXIVE, *conj_type]
+            conjugations.append(mk_variant_entry(conj_type, conj_form))
 
     if conjugations:
-        new_conjugations = []
-        # filter out duplicates
-        hs = set()
-        for conj in conjugations:
-            h = str(conj)
-            if h not in hs:
-                hs.add(h)
-                new_conjugations.append(conj)
-        variants = new_conjugations
+        variants = remove_duplicates(new_conjugations)
 
     return form, attrs, variants, definitions
 
@@ -245,21 +230,22 @@ def parse_combined_forms_table(table):
     return res
 
 
-EXTRACTORS = {
-    'Noun': ('noun', noun_extractor),
-    'Proper noun': ('proper-noun', default_extractor),
-    'Adjective': ('adjective', adjective_extractor),
-    'Verb': ('verb', verb_extractor),
-    'Adverb': ('adverb', default_extractor),
-    'Preposition': ('preposition', default_extractor),
-    'Conjunction': ('conjunction', default_extractor),
-    'Phrase': ('phrase', default_extractor),
-    'Numeral': ('numeral', default_extractor),
-    'Interjection': ('interjection', default_extractor),
-    'Pronoun': ('pronoun', default_extractor),
-    'Proverb': ('proverb', default_extractor),
-    'Abbreviation': ('abbreviation', default_extractor),
-    'Initialism': ('initialism', default_extractor),
-    'Determiner': ('determiner', default_extractor),
-    'Article': ('article', default_extractor),
-}
+def get_extractors():
+    return {
+        'Noun': ('noun', noun_extractor),
+        'Proper noun': ('proper-noun', default_extractor),
+        'Adjective': ('adjective', adjective_extractor),
+        'Verb': ('verb', verb_extractor),
+        'Adverb': ('adverb', default_extractor),
+        'Preposition': ('preposition', default_extractor),
+        'Conjunction': ('conjunction', default_extractor),
+        'Phrase': ('phrase', default_extractor),
+        'Numeral': ('numeral', default_extractor),
+        'Interjection': ('interjection', default_extractor),
+        'Pronoun': ('pronoun', default_extractor),
+        'Proverb': ('proverb', default_extractor),
+        'Abbreviation': ('abbreviation', default_extractor),
+        'Initialism': ('initialism', default_extractor),
+        'Determiner': ('determiner', default_extractor),
+        'Article': ('article', default_extractor),
+    }
