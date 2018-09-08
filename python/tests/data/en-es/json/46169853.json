@@ -1,0 +1,20 @@
+[
+    {
+        "attrs": [
+            "f"
+        ],
+        "defs": [
+            "provincialization"
+        ],
+        "lemma": "provincializaci\u00f3n",
+        "pos": "noun",
+        "variants": [
+            {
+                "form": "provincializaciones",
+                "type": [
+                    "pl."
+                ]
+            }
+        ]
+    }
+]

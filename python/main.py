@@ -3,20 +3,13 @@ import multiprocessing
 import os
 import sys
 
-from bs4 import BeautifulSoup
-
-import wiktionary_extractor.languages
-from wiktionary_extractor.languages import *
+from wiktionary_extractor.util import get_extractors
 from wiktionary_extractor.extractor import extract_from_path
-
-extractors = {}
 
 
 def main(args):
     # get extractors
-    lang = args.lang.replace('-', '_')
-    lang = getattr(wiktionary_extractor.languages, lang)
-    extractors = lang.get_extractors()
+    extractors = get_extractors(args.lang)
 
     def generate_paths():
         for root in args.root:

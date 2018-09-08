@@ -1,0 +1,32 @@
+[
+    {
+        "attrs": [],
+        "defs": [
+            "Of or relating to the San Mateo festival in Oviedo"
+        ],
+        "lemma": "mate\u00edn",
+        "pos": "adjective",
+        "variants": [
+            {
+                "form": "mateina",
+                "type": [
+                    "f."
+                ]
+            },
+            {
+                "form": "mateines",
+                "type": [
+                    "m.",
+                    "pl."
+                ]
+            },
+            {
+                "form": "mateinas",
+                "type": [
+                    "f.",
+                    "pl."
+                ]
+            }
+        ]
+    }
+]

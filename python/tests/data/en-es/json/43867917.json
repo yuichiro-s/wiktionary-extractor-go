@@ -1,0 +1,440 @@
+[
+    {
+        "attrs": [],
+        "defs": [
+            "to numb",
+            "(reflexive) to go numb"
+        ],
+        "lemma": "entumecer",
+        "pos": "verb",
+        "variants": [
+            {
+                "form": "entumecer",
+                "type": [
+                    "INF"
+                ]
+            },
+            {
+                "form": "entumeciendo",
+                "type": [
+                    "GER"
+                ]
+            },
+            {
+                "form": "entumecido",
+                "type": [
+                    "PP",
+                    "m."
+                ]
+            },
+            {
+                "form": "entumecida",
+                "type": [
+                    "PP",
+                    "f."
+                ]
+            },
+            {
+                "form": "entumecidos",
+                "type": [
+                    "PP",
+                    "m.",
+                    "pl."
+                ]
+            },
+            {
+                "form": "entumecidas",
+                "type": [
+                    "PP",
+                    "f.",
+                    "pl."
+                ]
+            },
+            {
+                "form": "entumezco",
+                "type": [
+                    "PRES",
+                    "1s"
+                ]
+            },
+            {
+                "form": "entumeces",
+                "type": [
+                    "PRES",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumec\u00e9s",
+                "type": [
+                    "PRES",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumece",
+                "type": [
+                    "PRES",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumecemos",
+                "type": [
+                    "PRES",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumec\u00e9is",
+                "type": [
+                    "PRES",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumecen",
+                "type": [
+                    "PRES",
+                    "3p"
+                ]
+            },
+            {
+                "form": "entumec\u00eda",
+                "type": [
+                    "IMPERF",
+                    "1s"
+                ]
+            },
+            {
+                "form": "entumec\u00edas",
+                "type": [
+                    "IMPERF",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumec\u00eda",
+                "type": [
+                    "IMPERF",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumec\u00edamos",
+                "type": [
+                    "IMPERF",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumec\u00edais",
+                "type": [
+                    "IMPERF",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumec\u00edan",
+                "type": [
+                    "IMPERF",
+                    "3p"
+                ]
+            },
+            {
+                "form": "entumec\u00ed",
+                "type": [
+                    "PRET",
+                    "1s"
+                ]
+            },
+            {
+                "form": "entumeciste",
+                "type": [
+                    "PRET",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumeci\u00f3",
+                "type": [
+                    "PRET",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumecimos",
+                "type": [
+                    "PRET",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumecisteis",
+                "type": [
+                    "PRET",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumecieron",
+                "type": [
+                    "PRET",
+                    "3p"
+                ]
+            },
+            {
+                "form": "entumecer\u00e9",
+                "type": [
+                    "FUT",
+                    "1s"
+                ]
+            },
+            {
+                "form": "entumecer\u00e1s",
+                "type": [
+                    "FUT",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumecer\u00e1",
+                "type": [
+                    "FUT",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumeceremos",
+                "type": [
+                    "FUT",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumecer\u00e9is",
+                "type": [
+                    "FUT",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumecer\u00e1n",
+                "type": [
+                    "FUT",
+                    "3p"
+                ]
+            },
+            {
+                "form": "entumecer\u00eda",
+                "type": [
+                    "COND",
+                    "1s"
+                ]
+            },
+            {
+                "form": "entumecer\u00edas",
+                "type": [
+                    "COND",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumecer\u00eda",
+                "type": [
+                    "COND",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumecer\u00edamos",
+                "type": [
+                    "COND",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumecer\u00edais",
+                "type": [
+                    "COND",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumecer\u00edan",
+                "type": [
+                    "COND",
+                    "3p"
+                ]
+            },
+            {
+                "form": "entumezca",
+                "type": [
+                    "SBJV",
+                    "1s"
+                ]
+            },
+            {
+                "form": "entumezcas",
+                "type": [
+                    "SBJV",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumezca",
+                "type": [
+                    "SBJV",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumezcamos",
+                "type": [
+                    "SBJV",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumezc\u00e1is",
+                "type": [
+                    "SBJV",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumezcan",
+                "type": [
+                    "SBJV",
+                    "3p"
+                ]
+            },
+            {
+                "form": "entumeciera",
+                "type": [
+                    "SBJV-IMPERF",
+                    "1s"
+                ]
+            },
+            {
+                "form": "entumecieras",
+                "type": [
+                    "SBJV-IMPERF",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumeciera",
+                "type": [
+                    "SBJV-IMPERF",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumeci\u00e9ramos",
+                "type": [
+                    "SBJV-IMPERF",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumecierais",
+                "type": [
+                    "SBJV-IMPERF",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumecieran",
+                "type": [
+                    "SBJV-IMPERF",
+                    "3p"
+                ]
+            },
+            {
+                "form": "entumeciese",
+                "type": [
+                    "SBJV-IMPERF",
+                    "1s"
+                ]
+            },
+            {
+                "form": "entumecieses",
+                "type": [
+                    "SBJV-IMPERF",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumeciese",
+                "type": [
+                    "SBJV-IMPERF",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumeci\u00e9semos",
+                "type": [
+                    "SBJV-IMPERF",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumecieseis",
+                "type": [
+                    "SBJV-IMPERF",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumeciesen",
+                "type": [
+                    "SBJV-IMPERF",
+                    "3p"
+                ]
+            },
+            {
+                "form": "entumece",
+                "type": [
+                    "IMP",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumec\u00e9",
+                "type": [
+                    "IMP",
+                    "2s"
+                ]
+            },
+            {
+                "form": "entumezca",
+                "type": [
+                    "IMP",
+                    "3s"
+                ]
+            },
+            {
+                "form": "entumezcamos",
+                "type": [
+                    "IMP",
+                    "1p"
+                ]
+            },
+            {
+                "form": "entumeced",
+                "type": [
+                    "IMP",
+                    "2p"
+                ]
+            },
+            {
+                "form": "entumezcan",
+                "type": [
+                    "IMP",
+                    "3p"
+                ]
+            }
+        ]
+    }
+]

@@ -1,6 +1,6 @@
 import logging
 
-from wiktionary_extractor.common import default_extractor, get_next, extract_tables, remove_duplicates
+from wiktionary_extractor.common import default_extractor, extract_tables, remove_duplicates
 
 # person
 PERSON_1_SINGULAR = '1s'
@@ -50,17 +50,12 @@ UNCOUNTABLE = 'uncountable'
 SUPERLATIVE = 'SUP'
 
 
-def mk_variant_entry(variant_type, variant_form):
-    return [variant_type, variant_form]
-
-
 def filter_variants(variants, supported_variants):
     new_variants = []
     for variant_type, variant_form in variants:
         if variant_type in supported_variants:
             new_variant_type = supported_variants[variant_type]
-            new_variants.append(
-                mk_variant_entry(new_variant_type, variant_form))
+            new_variants.append((new_variant_type, variant_form))
         else:
             logging.warning("Unknown variant type: " + variant_type)
     return new_variants
@@ -76,17 +71,16 @@ def noun_extractor(node):
                         new_attrs.append(a.text)
         return new_attrs
 
-    form, attrs, variants, definitions = default_extractor(
-        node, True, extract_attrs)
+    form, attrs, variants, definitions = default_extractor(node, True,
+                                                           extract_attrs)
 
-    variants = filter_variants(
-        variants, {
-            "plural": [PLURAL],
-            "feminine plural": [FEMININE, PLURAL],
-            "feminine": [FEMININE],
-            "masculine plural": [MASCULINE, PLURAL],
-            "masculine": [MASCULINE],
-        })
+    variants = filter_variants(variants, {
+        "plural": [PLURAL],
+        "feminine plural": [FEMININE, PLURAL],
+        "feminine": [FEMININE],
+        "masculine plural": [MASCULINE, PLURAL],
+        "masculine": [MASCULINE],
+    })
 
     return form, attrs, variants, definitions
 
@@ -94,15 +88,14 @@ def noun_extractor(node):
 def adjective_extractor(node):
     form, attrs, variants, definitions = default_extractor(node, True)
 
-    variants = filter_variants(
-        variants, {
-            "plural": [PLURAL],
-            "feminine singular": [FEMININE],
-            "feminine plural": [FEMININE, PLURAL],
-            "feminine": [FEMININE],
-            "masculine plural": [MASCULINE, PLURAL],
-            "superlative": [SUPERLATIVE],
-        })
+    variants = filter_variants(variants, {
+        "plural": [PLURAL],
+        "feminine singular": [FEMININE],
+        "feminine plural": [FEMININE, PLURAL],
+        "feminine": [FEMININE],
+        "masculine plural": [MASCULINE, PLURAL],
+        "superlative": [SUPERLATIVE],
+    })
 
     return form, attrs, variants, definitions
 
@@ -126,7 +119,7 @@ def verb_extractor(node):
         for conj_type, conj_form in new_conjugations:
             if is_reflexive:
                 conj_type = [REFLEXIVE, *conj_type]
-            conjugations.append(mk_variant_entry(conj_type, conj_form))
+            conjugations.append((conj_type, conj_form))
 
     if conjugations:
         variants = remove_duplicates(new_conjugations)

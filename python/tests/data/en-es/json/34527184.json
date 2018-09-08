@@ -1,0 +1,32 @@
+[
+    {
+        "attrs": [],
+        "defs": [
+            "Of or pertaining to Enrique Morente (1942-2010), a Spanish flamenco player, or his style of music"
+        ],
+        "lemma": "morentiano",
+        "pos": "adjective",
+        "variants": [
+            {
+                "form": "morentiana",
+                "type": [
+                    "f."
+                ]
+            },
+            {
+                "form": "morentianos",
+                "type": [
+                    "m.",
+                    "pl."
+                ]
+            },
+            {
+                "form": "morentianas",
+                "type": [
+                    "f.",
+                    "pl."
+                ]
+            }
+        ]
+    }
+]
