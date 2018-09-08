@@ -3,6 +3,8 @@ import traceback
 
 from bs4 import BeautifulSoup
 
+from wiktionary_extractor.common import default_extractor
+
 
 def extract_from_path(args):
     path, extractors = args
@@ -45,7 +47,11 @@ def remove_duplicates(lst):
 
 def extract(extractors, headline, node):
     objs = []
-    for name, (pos, extractor) in extractors.items():
+    for name, pos_extractor in extractors.items():
+        if isinstance(pos_extractor, str):
+            pos, extractor = pos_extractor, default_extractor
+        else:
+            pos, extractor = pos_extractor
         if headline.startswith(name):
             form, attrs, variants, definitions = extractor(node)
             variants = remove_duplicates(variants)

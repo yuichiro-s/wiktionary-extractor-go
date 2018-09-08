@@ -1,0 +1,37 @@
+[
+    {
+        "attrs": [],
+        "defs": [
+            "(intransitive) to equalize",
+            "(transitive) to cause something to equalize"
+        ],
+        "lemma": "draw level",
+        "pos": "verb",
+        "variants": [
+            {
+                "form": "draws level",
+                "type": [
+                    "3s"
+                ]
+            },
+            {
+                "form": "drawing level",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "drew level",
+                "type": [
+                    "PST"
+                ]
+            },
+            {
+                "form": "drawn level",
+                "type": [
+                    "PP"
+                ]
+            }
+        ]
+    }
+]

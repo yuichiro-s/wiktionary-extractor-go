@@ -1,0 +1,16 @@
+[
+    {
+        "attrs": [],
+        "defs": [
+            "(physics) The voltage between two points that use one Planck energy for every Planck charge that passes through: <math>V_p = \\sqrt{\\frac{k_ec^4}{G}} \\approx 1.43 \\times 10^{27} \\mbox{ V}</math>"
+        ],
+        "lemma": "Planck voltage",
+        "pos": "noun",
+        "variants": [
+            {
+                "form": "Planck voltages",
+                "type": "plural"
+            }
+        ]
+    }
+]

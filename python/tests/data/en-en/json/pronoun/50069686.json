@@ -1,0 +1,72 @@
+[
+    {
+        "attrs": [],
+        "defs": [
+            "My; belonging to me; that which belongs to me."
+        ],
+        "lemma": "mine",
+        "pos": "pronoun",
+        "variants": []
+    },
+    {
+        "attrs": [],
+        "defs": [
+            "An excavation from which ore or solid minerals are taken, especially one consisting of underground tunnels.",
+            "(figuratively) Any source of wealth or resources.",
+            "(military) A passage dug toward or underneath enemy lines, which is then packed with explosives.",
+            "(military) A device intended to explode when stepped upon or touched, or when approached by a ship, vehicle, or person.",
+            "(pyrotechnics) A type of firework that explodes on the ground, shooting sparks upward.",
+            "(entomology) The cavity made by a caterpillar while feeding inside a leaf.",
+            "(computing) A machine used to extract units of a cryptocurrency."
+        ],
+        "lemma": "mine",
+        "pos": "noun",
+        "variants": [
+            {
+                "form": "mines",
+                "type": "plural"
+            }
+        ]
+    },
+    {
+        "attrs": [],
+        "defs": [
+            "(transitive, intransitive) To remove (ore) from the ground.",
+            "To dig into, for ore or metal.",
+            "(transitive) To sow mines (the explosive devices) in (an area).",
+            "(transitive) To damage (a vehicle or ship) with a mine (an explosive device).",
+            "(intransitive) To dig a tunnel or hole; to burrow in the earth.",
+            "To dig away, or otherwise remove, the substratum or foundation of; to lay a mine under; to sap; to undermine; hence, to ruin or destroy by slow degrees or secret means.",
+            "(slang) To pick one's nose.",
+            "(computing) To earn new units of cryptocurrency by doing certain calculations."
+        ],
+        "lemma": "mine",
+        "pos": "verb",
+        "variants": [
+            {
+                "form": "mines",
+                "type": [
+                    "3s"
+                ]
+            },
+            {
+                "form": "mining",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "mined",
+                "type": [
+                    "PST"
+                ]
+            },
+            {
+                "form": "mined",
+                "type": [
+                    "PP"
+                ]
+            }
+        ]
+    }
+]

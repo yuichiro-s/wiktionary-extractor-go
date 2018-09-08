@@ -1,10 +1,13 @@
 import logging
 
 
-def get_next(tag, name):
-    tag = tag.next_sibling
+def get_next(tag, name, prev=False):
+    tag = tag.next_sibling if not prev else tag.previous_sibling
     while tag is not None and getattr(tag, 'name', None) != name:
-        tag = tag.next_sibling
+        if prev:
+            tag = tag.previous_sibling
+        else:
+            tag = tag.next_sibling
     return tag
 
 
@@ -20,11 +23,19 @@ def extract_tables(node):
             yield head, table
 
 
+def default_extractor_parse_variants(node, extract_attrs=None):
+    return default_extractor(
+        node, parse_variants=True, extract_attrs=extract_attrs)
+
+
 def default_extractor(node, parse_variants=False, extract_attrs=None):
     # parse form
     p = get_next(node, 'p')
-    form = p.strong.text
-    assert 'headword' in p.strong['class']
+    from_elt = p.find('strong')
+    if not from_elt:
+        # sometimes headword is tagged by <b>
+        from_elt = p.find('b')
+    form = from_elt.text
 
     # parse attributes
     attrs = []
@@ -42,7 +53,8 @@ def default_extractor(node, parse_variants=False, extract_attrs=None):
     if parse_variants:
         last_variant_type = None
         for b in p.find_all("b", {'class': 'form-of'}, recursive=False):
-            variant_type = b.previous_sibling.previous_sibling.text
+
+            variant_type = get_next(b, 'i', prev=True).text
 
             if variant_type == 'or':
                 # expand "or"
@@ -57,6 +69,8 @@ def default_extractor(node, parse_variants=False, extract_attrs=None):
     # parse definitions
     definitions = []
     ol = get_next(p, 'ol')
+    if not ol:
+        ol = get_next(p, 'ul')
     for li in ol.find_all('li', recursive=False):
         # remove untranslated definition
         if li.find('a', text='rfdef'):

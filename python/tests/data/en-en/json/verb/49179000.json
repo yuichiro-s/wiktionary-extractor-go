@@ -1,0 +1,55 @@
+[
+    {
+        "attrs": [],
+        "defs": [
+            "To remain afloat in the water without use of any buoyancy aid, by using kicking motions and hand motions.",
+            "To make no progress, expending effort just enough to maintain a stable position."
+        ],
+        "lemma": "tread water",
+        "pos": "verb",
+        "variants": [
+            {
+                "form": "treads water",
+                "type": [
+                    "3s"
+                ]
+            },
+            {
+                "form": "treading water",
+                "type": [
+                    "PRESP"
+                ]
+            },
+            {
+                "form": "treaded water",
+                "type": [
+                    "PST"
+                ]
+            },
+            {
+                "form": "trod water",
+                "type": [
+                    "PST"
+                ]
+            },
+            {
+                "form": "treaded water",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "trodden water",
+                "type": [
+                    "PP"
+                ]
+            },
+            {
+                "form": "trod water",
+                "type": [
+                    "PP"
+                ]
+            }
+        ]
+    }
+]
