@@ -1,0 +1,794 @@
+[
+    {
+        "attrs": [
+            "Vowel-stem",
+            "ha-irregular"
+        ],
+        "defs": [
+            "to give up (a goal), to abandon, to resign"
+        ],
+        "lemma": "\ub2e8\ub150\ud558\ub2e4",
+        "pos": "adjective",
+        "variants": [
+            {
+                "form": "\ub2e8\ub150\ud558",
+                "type": [
+                    "stem1"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574",
+                "type": [
+                    "stem2"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc5ec",
+                "type": [
+                    "stem2a"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558",
+                "type": [
+                    "stem3"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud55c\ub2e4",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574\uc694",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud569\ub2c8\ub2e4",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\ub2e4",
+                "type": [
+                    "indicative",
+                    "past",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\uc5b4",
+                "type": [
+                    "indicative",
+                    "past",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\uc5b4\uc694",
+                "type": [
+                    "indicative",
+                    "past",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\uc2b5\ub2c8\ub2e4",
+                "type": [
+                    "indicative",
+                    "past",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\ub290\ub0d0",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574\uc694",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud569\ub2c8\uae4c",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\ub290\ub0d0",
+                "type": [
+                    "interrogative",
+                    "past",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\uc5b4",
+                "type": [
+                    "interrogative",
+                    "past",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\uc5b4\uc694",
+                "type": [
+                    "interrogative",
+                    "past",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\uc2b5\ub2c8\uae4c",
+                "type": [
+                    "interrogative",
+                    "past",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc790",
+                "type": [
+                    "hortative",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574",
+                "type": [
+                    "hortative",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574\uc694",
+                "type": [
+                    "hortative",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud569\uc2dc\ub2e4",
+                "type": [
+                    "hortative",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574\ub77c",
+                "type": [
+                    "imperative",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc5ec\ub77c",
+                "type": [
+                    "imperative",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574",
+                "type": [
+                    "imperative",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574\uc694",
+                "type": [
+                    "imperative",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud569\uc2dc\uc624",
+                "type": [
+                    "imperative",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uaca0\ub2e4",
+                "type": [
+                    "assertive",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uaca0\uc5b4",
+                "type": [
+                    "assertive",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uaca0\uc5b4\uc694",
+                "type": [
+                    "assertive",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uaca0\uc2b5\ub2c8\ub2e4",
+                "type": [
+                    "assertive",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574",
+                "type": [
+                    "reason",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574\uc11c",
+                "type": [
+                    "reason",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc5ec\uc11c",
+                "type": [
+                    "reason",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\ub2c8",
+                "type": [
+                    "reason",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\ub2c8\uae4c",
+                "type": [
+                    "reason",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc9c0\ub9cc",
+                "type": [
+                    "contrast",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\ub294\ub370",
+                "type": [
+                    "contrast",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\ub354\ub2c8",
+                "type": [
+                    "contrast",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uace0",
+                "type": [
+                    "conjunction",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uba74",
+                "type": [
+                    "condition",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud574\uc57c",
+                "type": [
+                    "condition",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc5ec\uc57c",
+                "type": [
+                    "condition",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\ub824\uace0",
+                "type": [
+                    "motive",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud568",
+                "type": [
+                    "verbal-noun",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uae30",
+                "type": [
+                    "verbal-noun",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\uc74c",
+                "type": [
+                    "verbal-noun",
+                    "past",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc600\uc74c",
+                "type": [
+                    "verbal-noun",
+                    "past",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud588\uae30",
+                "type": [
+                    "verbal-noun",
+                    "past",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc600\uae30",
+                "type": [
+                    "verbal-noun",
+                    "past",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud55c",
+                "type": [
+                    "determiner",
+                    "past",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\ub294",
+                "type": [
+                    "determiner",
+                    "present",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud560",
+                "type": [
+                    "determiner",
+                    "future",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2e0\ub2e4",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc154",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc138\uc694",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc154\uc694",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2ed\ub2c8\ub2e4",
+                "type": [
+                    "indicative",
+                    "non-past",
+                    "honorific",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\ub2e4",
+                "type": [
+                    "indicative",
+                    "past",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\uc5b4",
+                "type": [
+                    "indicative",
+                    "past",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\uc5b4\uc694",
+                "type": [
+                    "indicative",
+                    "past",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\uc2b5\ub2c8\ub2e4",
+                "type": [
+                    "indicative",
+                    "past",
+                    "honorific",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\ub290\ub0d0",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc154",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc138\uc694",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc154\uc694",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2ed\ub2c8\uae4c",
+                "type": [
+                    "interrogative",
+                    "non-past",
+                    "honorific",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\ub290\ub0d0",
+                "type": [
+                    "interrogative",
+                    "past",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\uc5b4",
+                "type": [
+                    "interrogative",
+                    "past",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\uc5b4\uc694",
+                "type": [
+                    "interrogative",
+                    "past",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\uc2b5\ub2c8\uae4c",
+                "type": [
+                    "interrogative",
+                    "past",
+                    "honorific",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\ub77c",
+                "type": [
+                    "imperative",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc154",
+                "type": [
+                    "imperative",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc138\uc694",
+                "type": [
+                    "imperative",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2ed\uc2dc\uc624",
+                "type": [
+                    "imperative",
+                    "honorific",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\uaca0\ub2e4",
+                "type": [
+                    "assertive",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\uaca0\uc5b4",
+                "type": [
+                    "assertive",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\uaca0\uc5b4\uc694",
+                "type": [
+                    "assertive",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\uaca0\uc2b5\ub2c8\ub2e4",
+                "type": [
+                    "assertive",
+                    "honorific",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc154",
+                "type": [
+                    "reason",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc154\uc11c",
+                "type": [
+                    "reason",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\ub2c8",
+                "type": [
+                    "reason",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\ub2c8\uae4c",
+                "type": [
+                    "reason",
+                    "honorific",
+                    "formal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\uc9c0\ub9cc",
+                "type": [
+                    "contrast",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\ub294\ub370",
+                "type": [
+                    "contrast",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\ub354\ub2c8",
+                "type": [
+                    "contrast",
+                    "honorific",
+                    "informal-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\uace0",
+                "type": [
+                    "conjunction",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\uba74",
+                "type": [
+                    "condition",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc154\uc57c",
+                "type": [
+                    "condition",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\ub824\uace0",
+                "type": [
+                    "motive",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2ec",
+                "type": [
+                    "verbal-noun",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\uae30",
+                "type": [
+                    "verbal-noun",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\uc74c",
+                "type": [
+                    "verbal-noun",
+                    "past",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc168\uae30",
+                "type": [
+                    "verbal-noun",
+                    "past",
+                    "honorific",
+                    "informal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2e0",
+                "type": [
+                    "determiner",
+                    "past",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2dc\ub294",
+                "type": [
+                    "determiner",
+                    "present",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            },
+            {
+                "form": "\ub2e8\ub150\ud558\uc2e4",
+                "type": [
+                    "determiner",
+                    "future",
+                    "honorific",
+                    "formal-non-polite"
+                ]
+            }
+        ]
+    }
+]
