@@ -29,7 +29,10 @@ PERSON_3_PLURAL = '3p'
 
 
 def noun_extractor(node):
-    form, attrs, variants, definitions = default_extractor(node, True)
+    obj = default_extractor(node, True)
+    if not obj:
+        return None
+    form, attrs, variants, definitions = obj
 
     variants = filter_variants(
         variants,
@@ -50,7 +53,10 @@ def noun_extractor(node):
 
 
 def adjective_extractor(node):
-    form, attrs, variants, definitions = default_extractor(node, True)
+    obj = default_extractor(node, True)
+    if not obj:
+        return None
+    form, attrs, variants, definitions = obj
 
     variants = filter_variants(variants, {
         'superlative': [SUPERLATIVE],
@@ -82,7 +88,10 @@ def get_all_cells(t, table, span=False):
 
 def verb_extractor(node):
     # Note: variants are not parsed here, since 'form-of' class is missing
-    form, attrs, _, definitions = default_extractor(node, True)
+    obj = default_extractor(node, True)
+    if not obj:
+        return None
+    form, attrs, _, definitions = obj
 
     conjugations = []
     if definitions:

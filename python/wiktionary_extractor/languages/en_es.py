@@ -58,8 +58,10 @@ def noun_extractor(node):
                         new_attrs.append(a.text)
         return new_attrs
 
-    form, attrs, variants, definitions = default_extractor(
-        node, True, extract_attrs)
+    obj = default_extractor(node, True, extract_attrs)
+    if not obj:
+        return None
+    form, attrs, variants, definitions = obj
 
     variants = filter_variants(
         variants, {
@@ -74,7 +76,10 @@ def noun_extractor(node):
 
 
 def adjective_extractor(node):
-    form, attrs, variants, definitions = default_extractor(node, True)
+    obj = default_extractor(node, True)
+    if not obj:
+        return None
+    form, attrs, variants, definitions = obj
 
     variants = filter_variants(
         variants, {
@@ -90,7 +95,10 @@ def adjective_extractor(node):
 
 
 def verb_extractor(node):
-    form, attrs, variants, definitions = default_extractor(node, True)
+    obj = default_extractor(node, True)
+    if not obj:
+        return None
+    form, attrs, variants, definitions = obj
 
     # filterout compound variants of verbs
     definitions = list(filter(lambda d: 'Compound of ' not in d, definitions))

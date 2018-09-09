@@ -107,7 +107,10 @@ def default_extractor(node, parse_variants=False, extract_attrs=None):
         if len(definition) > 0:
             definitions.append(definition)
 
-    return form, attrs, variants, definitions
+    if len(definitions) > 0:
+        return form, attrs, variants, definitions
+    else:
+        return None
 
 
 def filter_variants(variants, supported_variants):

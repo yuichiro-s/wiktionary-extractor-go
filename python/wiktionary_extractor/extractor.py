@@ -53,9 +53,10 @@ def extract(extractors, headline, node):
         else:
             pos, extractor = pos_extractor
         if headline.startswith(name):
-            form, attrs, variants, definitions = extractor(node)
-            variants = remove_duplicates(variants)
-            if len(definitions) > 0:
+            obj = extractor(node)
+            if obj:
+                form, attrs, variants, definitions = obj
+                variants = remove_duplicates(variants)
                 obj = [form, pos, attrs, variants, definitions]
                 objs.append(obj)
     return objs
