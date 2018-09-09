@@ -1,11 +1,12 @@
 import os
 import json
-import warnings
+from functools import total_ordering
 
 from wiktionary_extractor.extractor import extract_from_path
 from wiktionary_extractor.util import get_extractors
 
 
+@total_ordering
 class Entry(object):
     def __init__(self, obj):
         lemma, pos, attrs, variants, defs = obj
@@ -32,6 +33,16 @@ class Entry(object):
         variants = [(item['type'], item['form']) for item in obj['variants']]
         return Entry(
             [obj['lemma'], obj['pos'], obj['attrs'], variants, obj['defs']])
+
+    def __eq__(self, other):
+        return self.convert() == other.convert()
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        return self.convert().items() < other.convert().items()
+
 
 
 def assert_entry_equal(correct_entry, parsed_entry):
