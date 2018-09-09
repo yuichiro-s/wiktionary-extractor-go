@@ -115,6 +115,9 @@ def parse_stems(table):
             regularity = ''.join(
                 map(chr, filter(lambda x: x < 256, map(
                     ord, es[1].strip())))).replace('(', '').replace(')', '')
+            if regularity == '/it/eop-irregular':
+                regularity = 'it/eop-irregular'
+
             conj_types = [
                 stem,
                 regularity,
