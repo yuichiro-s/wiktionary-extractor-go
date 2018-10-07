@@ -7,6 +7,13 @@ from wiktionary_extractor.util import get_extractors
 from wiktionary_extractor.extractor import extract_from_path
 
 
+def reformat(obj):
+    lemma, _, _, variants, _ = obj
+    keys = [lemma] + [form for _, form in variants]
+    keys = [key.lower() for key in keys]
+    return [obj, keys]
+
+
 def main(args):
     # get extractors
     extractors = get_extractors(args.lang)
@@ -32,7 +39,7 @@ def main(args):
 
     for objs in map_func(extract_from_path, generate_args(generate_paths())):
         for obj in objs:
-            print(json.dumps(obj))
+            print(json.dumps(reformat(obj)))
             sys.stdout.flush()
 
 
